@@ -3,6 +3,7 @@ import { PayloadAction } from '@reduxjs/toolkit';
 import { call, fork, take } from 'redux-saga/effects';
 import { LoginPayload, authActions } from './authSlice';
 import { push } from 'connected-react-router';
+import { history } from 'utils';
 
 function* handleLogin(payload: LoginPayload) {
   try {
@@ -12,13 +13,13 @@ function* handleLogin(payload: LoginPayload) {
       authActions.loginSuccess({
         // Dispatch action
         id: 1,
-        name: 'Zendy',
+        name: 'Estu DImas Danang',
       })
     );
-
+      
     // Redirect to Admin page
-    yield put(push('/admin/dashboard'));
-  } catch (error) {
+    history.push('/admin/dashboard');
+  } catch (error:any) {
     yield put(authActions.loginFailed(error.message)); // Dispatch action
   }
 }

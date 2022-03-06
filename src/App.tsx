@@ -1,26 +1,31 @@
 import { NotFound, PrivateRoute } from 'components/Common';
 import LoginPage from 'features/auth/pages/LoginPage';
-import React from 'react';
-import { Redirect, Route, Switch } from 'react-router-dom';
+import { Redirect, Route, Router, Switch } from 'react-router-dom';
 import { AdminLayout } from './components/Layout';
-
+import { CssBaseline } from '@material-ui/core';
+import { history } from 'utils';
 function App() {
   return (
     <>
-      <Switch>
-        <Redirect exact from="/" to="/admin/dashboard" />
-        <Route path="/login">
-          <LoginPage />
-        </Route>
+      <Router history={history}>
+        <CssBaseline>
+          <Switch>
+            <Redirect exact from="/" to="/admin/dashboard" />
+            <Route path="/login">
+              <LoginPage />
+            </Route>
 
-        <PrivateRoute path="/admin">
-          <AdminLayout />
-        </PrivateRoute>
+            <PrivateRoute path="/admin">
+              <AdminLayout />
+            </PrivateRoute>
 
-        <Route>
-          <NotFound />
-        </Route>
-      </Switch>
+            <Route>
+              <NotFound />
+            </Route>
+          </Switch>
+        </CssBaseline>
+      </Router>
+
     </>
   );
 }

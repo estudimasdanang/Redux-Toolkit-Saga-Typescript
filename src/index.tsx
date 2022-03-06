@@ -1,5 +1,4 @@
-// import { BrowserRouter } from 'react-router-dom';
-import { CircularProgress, CssBaseline } from '@material-ui/core';
+import { CircularProgress } from '@material-ui/core';
 import { ConnectedRouter } from 'connected-react-router';
 import React, { Suspense } from 'react';
 import ReactDOM from 'react-dom';
@@ -17,11 +16,7 @@ ReactDOM.render(
     <Suspense fallback={<CircularProgress size="20" color="secondary" />}>
       <Provider store={store}>
         <ConnectedRouter history={history}>
-          {/* <BrowserRouter> */}
-          <CssBaseline>
-            <App />
-          </CssBaseline>
-          {/* </BrowserRouter> */}
+          <App />
         </ConnectedRouter>
 
         <ToastContainer
